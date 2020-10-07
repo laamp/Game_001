@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/panel.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scripts/timer_example.gd" type="Script" id=3]
 
 [node name="root_node" type="Node2D"]
 
 [node name="panel" type="Panel" parent="."]
-margin_left = 353.197
-margin_top = 135.224
-margin_right = 656.197
-margin_bottom = 364.224
+margin_left = 515.014
+margin_top = 25.8476
+margin_right = 818.014
+margin_bottom = 254.848
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -22,7 +24,6 @@ margin_bottom = 66.5626
 text = "This is a label"
 align = 1
 valign = 1
-percent_visible = -0.0833333
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,4 +37,17 @@ text = "Click me!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="timer_example" type="Node2D" parent="."]
+position = Vector2( 525.906, 272.692 )
+script = ExtResource( 3 )
+
+[node name="timer" type="Timer" parent="timer_example"]
+autostart = true
+
+[node name="sprite" type="Sprite" parent="timer_example"]
+position = Vector2( 67.7983, 58.0594 )
+scale = Vector2( 1.59698, 1.59698 )
+texture = ExtResource( 2 )
 [connection signal="pressed" from="panel/button" to="panel" method="_on_button_pressed"]
+[connection signal="timeout" from="timer_example/timer" to="timer_example" method="_on_timer_timeout"]
